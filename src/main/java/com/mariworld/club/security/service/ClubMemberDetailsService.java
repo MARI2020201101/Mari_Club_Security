@@ -26,7 +26,6 @@ public class ClubMemberDetailsService implements UserDetailsService {
 
         Optional<ClubMember> result
                 = clubMemberRepository.findByEmail(username, false);
-
         //isPresent()에서 -> 존재하지 않을 수 있다. 그 경우 예외 던진다. 이거 catch는 누가하지?
         if(result.isEmpty()){
             throw new UsernameNotFoundException("Check Email or Social");
