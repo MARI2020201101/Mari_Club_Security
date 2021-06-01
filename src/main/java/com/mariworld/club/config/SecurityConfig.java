@@ -1,5 +1,6 @@
 package com.mariworld.club.config;
 
+import com.mariworld.club.security.handler.ClubLoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Bean
+    public ClubLoginSuccessHandler clubLoginSuccessHandler() {
+        return new ClubLoginSuccessHandler(passwordEncoder());
+    }
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -24,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .and()
                 .csrf().disable()
-                .oauth2Login()
+                .oauth2Login().successHandler(clubLoginSuccessHandler())
                 .and()
                 .logout();
     }

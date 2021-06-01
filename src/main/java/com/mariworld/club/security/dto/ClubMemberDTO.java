@@ -14,26 +14,26 @@ import java.util.Map;
 public class ClubMemberDTO extends User implements OAuth2User {
     private String email;
     private String name;
+    private String password;
     private boolean fromSocial;
     private Map<String, Object> attr;
 
-    //부모 생성자 + 내 생성자.
-    //password는 부모가 이미 가지고 있는 멤버변수 = 내거!
     public ClubMemberDTO(String username
             , String password
             , boolean fromSocial
             , Collection<? extends GrantedAuthority> authorities){
         super(username, password, authorities);
         this.email = username;
+        this.password = password;
         this.fromSocial = fromSocial;
     }
 
     public ClubMemberDTO(String email
-            , String name
+            , String password
             , boolean fromSocial
             , Collection<? extends GrantedAuthority> authorities
             , Map<String, Object> attr){
-        this(email, name, fromSocial,authorities);//위에 작성한 생성자
+        this(email, password, fromSocial, authorities);//위에 작성한 생성자
         this.attr = attr;
     }
     @Override
