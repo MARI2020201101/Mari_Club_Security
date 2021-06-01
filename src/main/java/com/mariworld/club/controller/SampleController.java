@@ -19,13 +19,22 @@ public class SampleController {
     }
 
     @GetMapping("/member")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public void member(@AuthenticationPrincipal ClubMemberDTO dto){
         log.info("for member...................");
         log.info("ClubMemberDTO : \n" +dto);
     }
 
     @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public void admin(){
         log.info("for admin...................");
+    }
+
+    @GetMapping("/exOnly")
+    @PreAuthorize("#clubMemberDTO!= null && #clubMemberDTO.username eq 'user11@aaa.com'")
+    public String exOnly(@AuthenticationPrincipal ClubMemberDTO clubMemberDTO){
+        log.info("for exMemberOnly...................");
+        return "/sample/member";
     }
 }
