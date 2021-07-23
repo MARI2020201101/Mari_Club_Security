@@ -1,10 +1,10 @@
-package com.mariworld.club.security.service;
+package com.mariworld.club.service;
 
-import com.mariworld.club.entity.ClubMember;
-import com.mariworld.club.security.dto.ClubMemberDTO;
+import com.mariworld.club.dto.ClubMemberDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 
 @SpringBootTest
 public class ClubMemberDetailsServiceTest {

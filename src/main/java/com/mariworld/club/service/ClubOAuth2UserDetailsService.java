@@ -1,12 +1,11 @@
-package com.mariworld.club.security.service;
+package com.mariworld.club.service;
 
 import com.mariworld.club.entity.ClubMember;
 import com.mariworld.club.entity.ClubMemberRole;
 import com.mariworld.club.repository.ClubMemberRepository;
-import com.mariworld.club.security.dto.ClubMemberDTO;
+import com.mariworld.club.dto.ClubMemberDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -15,9 +14,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service

@@ -1,6 +1,6 @@
 package com.mariworld.club.security.handler;
 
-import com.mariworld.club.security.dto.ClubMemberDTO;
+import com.mariworld.club.dto.ClubMemberDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
