@@ -4,6 +4,7 @@ import com.mariworld.club.security.filter.ApiCheckFilter;
 import com.mariworld.club.security.filter.ApiLoginFilter;
 import com.mariworld.club.security.handler.ApiLoginFailHandler;
 import com.mariworld.club.security.handler.ClubLoginSuccessHandler;
+import com.mariworld.club.security.util.JWTUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,12 +20,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public ApiCheckFilter apiCheckFilter(){
-        return new ApiCheckFilter("/notes/**/*");
+        return new ApiCheckFilter("/notes/**/*" , jwtUtil());
+    }
+
+    @Bean
+    public JWTUtil jwtUtil(){
+        return new JWTUtil();
     }
 
     @Bean
     public ApiLoginFilter apiLoginFilter() throws Exception {
-        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login");
+        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login", jwtUtil());
         apiLoginFilter.setAuthenticationManager(authenticationManager());
         apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
         return apiLoginFilter;
