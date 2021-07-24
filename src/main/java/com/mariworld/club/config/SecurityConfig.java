@@ -2,6 +2,7 @@ package com.mariworld.club.config;
 
 import com.mariworld.club.security.filter.ApiCheckFilter;
 import com.mariworld.club.security.filter.ApiLoginFilter;
+import com.mariworld.club.security.handler.ApiLoginFailHandler;
 import com.mariworld.club.security.handler.ClubLoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public ApiLoginFilter apiLoginFilter() throws Exception {
         ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login");
         apiLoginFilter.setAuthenticationManager(authenticationManager());
+        apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
         return apiLoginFilter;
     }
 
