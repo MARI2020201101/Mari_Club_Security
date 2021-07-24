@@ -21,7 +21,9 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         log.info("ApiLoginFilter.......................");
         String email=request.getParameter("email");
+        //제대로 하려면 여기에 repository랑 연계해야 할듯함
         String pw = "1111";
+
 
         if(email==null){
             throw new BadCredentialsException("email cannot be null");
