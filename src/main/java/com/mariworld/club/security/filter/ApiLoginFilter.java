@@ -22,7 +22,6 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     private JWTUtil jwtUtil;
     public ApiLoginFilter(String defaultFilterProcessesUrl , JWTUtil jwtUtil) {
-
         super(defaultFilterProcessesUrl);
         this.jwtUtil=jwtUtil;
     }
